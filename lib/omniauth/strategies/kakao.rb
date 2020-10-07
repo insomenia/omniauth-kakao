@@ -55,7 +55,7 @@ module OmniAuth
 
       def raw_kakao_account
         @raw_kakao_account ||= raw_info['kakao_account']
-        {"email" => "blank"} if @raw_kakao_account.blank?
+        @raw_kakao_account ||= {"email" => "blank"} if @raw_kakao_account.blank?
       end
     end
   end
