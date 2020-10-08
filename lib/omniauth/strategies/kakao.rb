@@ -19,7 +19,7 @@ module OmniAuth
         {
           'name' => raw_properties['nickname'],
           'image' => raw_properties['thumbnail_image'],
-          'email' => raw_kakao_account['email'],
+          'email' => raw_kakao_account.present? ? raw_kakao_account['email'] : "blank",
         }
       end
 
@@ -55,7 +55,6 @@ module OmniAuth
 
       def raw_kakao_account
         @raw_kakao_account ||= raw_info['kakao_account']
-        @raw_kakao_account = {"email" => "blank"} if @raw_kakao_account.blank?
       end
     end
   end
