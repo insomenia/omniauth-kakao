@@ -54,7 +54,7 @@ module OmniAuth
       end
 
       def raw_kakao_account
-        @raw_kakao_account ||= raw_info['kakao_account']
+        @raw_kakao_account ||= raw_info['kakao_account'] if raw_info.dig('kakao_account')
       end
     end
   end
