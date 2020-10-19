@@ -17,8 +17,8 @@ module OmniAuth
 
       info do
         {
-          'name' => raw_properties['nickname'],
-          'image' => raw_properties['thumbnail_image'],
+          'name' => raw_properties.present? ? raw_properties['nickname'] : nil,
+          'image' => raw_properties.present? ? raw_properties['thumbnail_image'] : nil,
           'email' => raw_kakao_account.present? ? raw_kakao_account['email'] : "blank",
         }
       end
@@ -50,7 +50,7 @@ module OmniAuth
       end
 
       def raw_properties
-        @raw_properties ||= raw_info['properties']
+        @raw_properties ||= raw_info['properties'] if raw_info.present?
       end
 
       def raw_kakao_account
